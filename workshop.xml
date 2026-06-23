@@ -1,0 +1,8 @@
+<Mod  
+   name="Yukimi's Advanced Map"  
+   description=""  
+   tags="cheats"  
+   dont_upload_folders=".vscode|.git|files/gfx/asp"  
+   dont_upload_files=".editorconfig|workshop_preview_image.png"  
+>  
+</Mod>
