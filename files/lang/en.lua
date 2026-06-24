@@ -62,4 +62,6 @@ biome_map_viewer_player_pin_with_arrow = "Show Player and show tooltip"
 biome_map_viewer_player_pin = "Show Player"
 biome_map_viewer_close_player_pin = "Hide player"
 
-biome_map_viewer_tele_close_map = "Close the map after teleporting"
+biome_map_viewer_tele_close_map_close = "Do not close map after teleporting"
+biome_map_viewer_tele_close_map = "Close the map after teleporting (Includes Parallel Worlds)"
+biome_map_viewer_tele_close_map2 = "Close the map after teleporting (excluding Parallel Worlds)"

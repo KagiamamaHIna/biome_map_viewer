@@ -375,18 +375,47 @@ function UpPlayerPinStatus()
     SettingSet("PlayerPinStatus", index)
 end
 
+local TeleStatus = {
+    {
+        id = "close_tele1",
+        icon = "mods/biome_map_viewer/files/gfx/bottom/tele1_grey.png",
+        desc = "$biome_map_viewer_tele_close_map_close"
+    },
+    {
+        id = "tele1_with_pw",
+        icon = "mods/biome_map_viewer/files/gfx/bottom/tele1_with_pw.png",
+        desc = "$biome_map_viewer_tele_close_map"
+    },
+    {
+        id = "tele1",
+        icon = "mods/biome_map_viewer/files/gfx/bottom/tele1.png",
+        desc = "$biome_map_viewer_tele_close_map_2"
+    }
+}
+
 function GetTeleAfterCloseMap()
-    local result = SettingGet("TeleAfterCloseMap")
-    if result == nil then
-        SettingSet("TeleAfterCloseMap", false)
-        result = false
+    local index = SettingGet("TeleAfterCloseMapStatus")
+    if index == nil then
+        index = 1
+        SettingSet("TeleAfterCloseMapStatus", index)
     end
-    return result
+    return TeleStatus[index]
 end
 
----@param enable boolean
-function SetTeleAfterCloseMap(enable)
-    SettingSet("TeleAfterCloseMap", enable)
+function NextTeleAfterCloseMap()
+    local index = SettingGet("TeleAfterCloseMapStatus") + 1
+    if index > #TeleStatus then
+        index = 1
+    end
+    SettingSet("TeleAfterCloseMapStatus", index)
+end
+
+function UpTeleAfterCloseMap()
+    local index = SettingGet("TeleAfterCloseMapStatus") - 1
+    if index < 1 then
+        index = #TeleStatus
+    end
+    SettingSet("TeleAfterCloseMapStatus", index)
 end
 
 function GetIsHorizontal()

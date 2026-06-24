@@ -216,6 +216,9 @@ local function MapOpen(UI, player)
     if UpInfo.clicked then
         SetCameraPlayerXY(player.attr.x - WorldWidth * 512)
         ClickSound()
+        if GetTeleAfterCloseMap().id == "tele1_with_pw" then
+            isMapOpen = false
+        end
     end
 
     --往右一个世界
@@ -232,6 +235,9 @@ local function MapOpen(UI, player)
     if NextInfo.clicked then
         SetCameraPlayerXY(player.attr.x + WorldWidth * 512)
         ClickSound()
+        if GetTeleAfterCloseMap().id == "tele1_with_pw" then
+            isMapOpen = false
+        end
     end
     
     local mx, my = UI.GetMousePosHasScale()
@@ -301,7 +307,7 @@ local function MapOpen(UI, player)
         if InputIsMouseButtonJustDown(Mouse_right) then
             SetCameraPlayerXY(posx, posy)
             TeleSound(posx,posy)
-            if GetTeleAfterCloseMap() then
+            if GetTeleAfterCloseMap().id ~= "close_tele1" then
                 isMapOpen = false
             end
         elseif activeObj and InputIsMouseButtonJustDown(Mouse_left) then
@@ -314,7 +320,7 @@ local function MapOpen(UI, player)
             local tpYOffset = activeObj.Pin.tpYOffset and activeObj.Pin.tpYOffset or 0
             SetCameraPlayerXY(x + tpXOffset, y + tpYOffset)
             TeleSound(x + tpXOffset, y + tpYOffset)
-            if GetTeleAfterCloseMap() then
+            if GetTeleAfterCloseMap().id ~= "close_tele1" then
                 isMapOpen = false
             end
         end
@@ -390,15 +396,15 @@ local function MapOpen(UI, player)
         ClickSound()
     end
 
-    if not GetTeleAfterCloseMap() then
-        UI.NextOption(GUI_OPTION.DrawSemiTransparent)
-    end
+    local Tele1Stauts = GetTeleAfterCloseMap()
     UI.NextZDeep(0)
-    local Tele1Click = UI.ImageButton("TeleAfterCloseMap", 0, 0, "mods/biome_map_viewer/files/gfx/bottom/tele1.png")
-    UI.GuiTooltip("$biome_map_viewer_tele_close_map")
+    local Tele1Click,rightTele1 = UI.ImageButton("TeleAfterCloseMap", 0, 0, Tele1Stauts.icon)
+    UI.GuiTooltip(Tele1Stauts.desc)
     if Tele1Click then
-        SetTeleAfterCloseMap(not GetTeleAfterCloseMap())
+        NextTeleAfterCloseMap()
         ClickSound()
+    elseif rightTele1 then
+        UpTeleAfterCloseMap()
     end
 
     if not GetIsHorizontal() then

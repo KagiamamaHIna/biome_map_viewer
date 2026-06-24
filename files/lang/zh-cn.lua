@@ -59,4 +59,6 @@ biome_map_viewer_player_pin_with_arrow = "显示玩家并显示提示文本"
 biome_map_viewer_player_pin = "显示玩家"
 biome_map_viewer_close_player_pin = "隐藏玩家"
 
-biome_map_viewer_tele_close_map = "传送后关闭地图"
+biome_map_viewer_tele_close_map_close = "传送后不会关闭地图"
+biome_map_viewer_tele_close_map = "传送后关闭地图 (包含平行世界传送)"
+biome_map_viewer_tele_close_map_2 = "传送后关闭地图 (不包含平行世界传送)"
