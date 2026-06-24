@@ -28,8 +28,11 @@ end
 function InitMap(fn)
     --小技巧，BiomeMapLoad_KeepPlayer会重新加载玩家导致玩家id变化，以此检测需要刷新的情况
     local player = GetPlayer()
-    if player ~= 0 and lastPlayerID ~= player then
-        if lastPlayerID ~= nil then --第一次加载玩家的时候不用进行重置
+    if GetPolyPlayerObj() or (GetCessationPlayerObj() and player == nil) then--检测是否变形为其他实体
+        lastPlayerID = nil
+    end
+    if player and player ~= 0 and lastPlayerID ~= player then
+        if lastPlayerID ~= nil then --第一次加载玩家的时候不用进行重置，变形也不用
             mapfile = nil
             mapimage = nil
         end
