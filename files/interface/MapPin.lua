@@ -527,6 +527,10 @@ FixedPin = {
         image = "mods/biome_map_viewer/files/gfx/screenshots/holymountain.png",
         imageScale = 0.10,
         name = "$biome_holymountain",
+        isEnabled = function (x,y)
+            local file = DebugBiomeMapGetFilename(x, y)
+            return file == "data/biome/boss_arena.xml"
+        end
     },
     {--三眼
         x = 3545,
@@ -535,6 +539,10 @@ FixedPin = {
         image = "mods/biome_map_viewer/files/gfx/screenshots/boss_centipede.png",
         imageScale = 0.10,
         name = "$animal_boss_centipede",
+        isEnabled = function (x,y)
+            local file = DebugBiomeMapGetFilename(x, y)
+            return file == "data/biome/boss_arena.xml"
+        end
     },
     {--康特勒琴
         x = -1626,
@@ -542,7 +550,11 @@ FixedPin = {
         icon = "mods/biome_map_viewer/files/gfx/note_yellow.png",
         image = "mods/biome_map_viewer/files/gfx/screenshots/kantele.png",
         imageScale = 0.10,
-        name = "$item_ocarina",
+        name = "$item_kantele",
+        isEnabled = function (x,y)
+            local file = DebugBiomeMapGetFilename(x, y)
+            return file == "data/biome/mountain_tree.xml"
+        end
     },
     {--留声机2
         x = -12184,
