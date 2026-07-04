@@ -241,8 +241,15 @@ local function MapOpen(UI, player)
     end
     
     local mx, my = UI.GetMousePosHasScale()
-    if (mx > MapX and mx < MapX + MapW and my > MapY and my < MapY + MapH) or activeObj then
+    local inMap = mx > MapX and mx < MapX + MapW and my > MapY and my < MapY + MapH
+    if inMap or activeObj then
         local posx, posy = MapPosToWorldPos(UI, mx, my, ParallelWorld)
+
+        local MouseInMapX = math.floor((mx - MapX) / ImgScale) * ImgScale
+        local MouseInMapY = math.floor((my - MapY) / ImgScale) * ImgScale
+
+        UI.NextZDeep(1)
+        UI.Image("ActiveWhite", MapX + MouseInMapX, MapY + MouseInMapY, "mods/biome_map_viewer/files/gfx/white.png", 0.4, ImgScale)
 
         UI.BetterTooltipsNoCenter(function(flag, inputX, leftOrRight, OffsetW, OffsetH)
             local NewLine = function(str, yoffset)
