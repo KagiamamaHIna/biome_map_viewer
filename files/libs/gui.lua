@@ -1,4 +1,3 @@
-dofile_once("mods/biome_map_viewer/files/libs/unsafe.lua")
 dofile_once("mods/biome_map_viewer/files/libs/fn.lua")
 dofile_once("data/scripts/debug/keycodes.lua")
 dofile_once("data/scripts/lib/utilities.lua")
