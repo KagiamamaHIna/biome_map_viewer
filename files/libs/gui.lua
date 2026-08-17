@@ -2238,6 +2238,9 @@ function UI.Drag(srcx,srcy)
     end
     local mx, my = UI.GetMousePosHasScale()
     if this.private.DragX == nil then
+        if not InputIsMouseButtonJustDown(Mouse_left) then
+            return false, srcx, srcy
+        end
         this.private.DragX = srcx
         this.private.DragY = srcy
         this.private.DragZeroX = mx
